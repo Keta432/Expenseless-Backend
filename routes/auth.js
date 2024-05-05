@@ -11,14 +11,14 @@ const fetchuser = require("../middleware/fetchuser");
 //SignUp using post: "http://localhost:5000/api/auth/signup"
 router.post("/signup", async (req, res) => {
   try {
-    let user = await User.findOne({ email: req.body.email }).maxTimeMS(30000); // Set timeout to 30 seconds
+    // let user = await User.findOne({ email: req.body.email }).maxTimeMS(30000); // Set timeout to 30 seconds
   //checking duplicate email
-    if (user) {
-      return res.status(400).json({ error: "Email already exists" });
-    }
+    // if (user) {
+    //   return res.status(400).json({ error: "Email already exists" });
+    // }
     const salt = await bcrypt.genSalt(10);
     const secpass = await bcrypt.hash(req.body.password, salt);
-    user = await User.create({
+    let user = await User.create({
       // creting new user
       username: req.body.username,
       email: req.body.email,
