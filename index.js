@@ -5,10 +5,10 @@ const cors=require('cors')
 connectToMongo();
 
 const app = express()
-const port = process.env.port || 5000
+const port = process.env.PORT|| 5000
 
 app.use(cors({
-  origin:["http://localhost:3000","https://expenseless-frontend.onrender.com/"]
+  origin:["http://localhost:3000","https://expenseless-frontend.onrender.com/"]//https://expenseless-frontend.onrender.com
 }))
 app.use(express.json());
 
